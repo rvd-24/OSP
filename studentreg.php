@@ -1,4 +1,48 @@
+<?php
+function studentRegisterFun()
+{
+    $msg="";
+    if(isset($_GET['Name'])){
+        $msg="Please Enter First Name";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
 
+    }
+
+    if(isset($_GET['ID'])){
+        $msg="Please Enter ID";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
+
+    }
+
+    if(isset($_GET['email'])){
+        $msg="Please Enter Email";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
+
+    }
+    if(isset($_GET['password'])){
+        $msg="Please Enter Password";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
+
+    }
+    if(isset($_GET['characters'])){
+        $msg="Please Enter Valid Characters in Your Name";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
+    }
+    if(isset($_GET['InValidEmail'])){
+        $msg="Please Enter Valid Email";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
+    }
+    if(isset($_GET['UserExits'])){
+        $msg="Your Account Already Exits";
+        echo '<div class="alert alert-danger text-center">'.$msg.'</div>';
+    }
+    if(isset($_GET['success'])){
+        $msg="Successfully Registered!";
+        echo '<div class="alert alert-success text-center">'.$msg.'
+        <a href="student-login.php">Login Now</a> </div>';        
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,8 +108,8 @@
                               </a>
                               <!-- Dropdown menu -->
                               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="faculty-login.php">Login</a></li>
-                                <li><a class="dropdown-item" href="faculty-register.php">Register</a></li>
+                                <li><a class="dropdown-item" href="student-login.php">Login</a></li>
+                                <li><a class="dropdown-item" href="student-register.php">Register</a></li>
                     
                               </ul>
                             </li>
@@ -81,50 +125,32 @@
 
 
 
+
 <div class="container">
-      <div class="d-flex justify-content-center">
-        <h2>Welcome To the Student Faculty Academic Portal</h2>
-      </div>
-
-      <div class="row d-flex justify-content-around">
-        <div class="card mt-5 m-2 p-3" style="width: 18rem">
-          <img
-            class="card-img-top"
-            src="images/student.png"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Student</h5>
-            <p class="card-text">
-              Visiting The Student Route.. Lets You Access your Student Account
-              and Lets You Access the Details For The Same
-            </p>
-            <a href="studentlogin.html" class="btn btn-dark"
-              >Proceed To Student Login</a
-            >
-          </div>
+    <div class="row mb-5">
+        <div class="col-lg-6 m-auto">
+            <div class="mt-5">
+                <img src="images/slogin.png" alt="student Register" width="150" height="150" class="d-flex m-auto">
+            </div>
+            <div class="card">
+                <div class="card-title bg-dark rounded-top">
+                    <h3 class="text-center text-white py-3">Student Registration</h3>
+                </div>
+                <div class="card-body">
+                <?php
+                  studentRegisterFun();
+                  ?>
+                <form action="student-registerphp.php" method=post enctype="multipart/form-data">
+                  <input type="text" placeholder="Name" name="Name" class="form-control mb-2">
+                  <input type="text" placeholder="Registration Number" name="studid" class="form-control mb-2">
+                  <input type="email" placeholder="Email" name="email" class="form-control mb-2">
+                  <input type="password" placeholder="Password" name="password" class="form-control mb-3" >
+                  <a href="studentlogin.html"><button class="btn btn-success" name="register">Register</button></a>
+                </form >
+                </div>
+            </div>
         </div>
-        <div class="card mt-5 m-2 p-3" style="width: 18rem">
-          <img
-            class="card-img-top"
-            src="images/faculty.png"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Faculty</h5>
-            <p class="card-text">
-              The Teacher route lets you view and admininstratively edit Student
-              Profiles
-              <br>
-              <br>
-            </p>
-            <a href="./faculty/faclogin.html" class="btn btn-dark"
-              >Proceed To Faculty Login</a
-            >
-          </div>
-        </div>
-      </div>
     </div>
-
+</div>
 </body>
 </html>
